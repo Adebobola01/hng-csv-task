@@ -2,8 +2,9 @@ const csv = require("csv-parser");
 const fs = require("fs");
 const crypto = require("crypto");
 const createCsvWriter = require("csv-writer").createObjectCsvWriter;
+const filename = "hngTask";
 const csvWriter = createCsvWriter({
-    path: "./hngTask.output.csv",
+    path: `./${filename}.output.csv`,
     header: [
         "Series Number",
         "Filename",
@@ -19,7 +20,7 @@ const csvWriter = createCsvWriter({
 const results = [];
 
 const readCSVfile = async () => {
-    fs.createReadStream("hngTask.csv")
+    fs.createReadStream(`${filename}.csv`)
         .pipe(csv())
         .on("data", async (data) => {
             if (!data.Filename) {
