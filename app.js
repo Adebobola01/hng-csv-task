@@ -15,7 +15,6 @@ exports.app = (filename, headerArr, ) => {
     });
     
     const results = [];
-    let teamName;
     
     const readCSVfile = async () => {
         fs.createReadStream(`${filename}.csv`)
@@ -33,14 +32,20 @@ exports.app = (filename, headerArr, ) => {
                     "minting_tool": "SuperMinter/2.5.2",
                     "sensitive_content": false,
                     "series_number": 22,
-                    "series_total": 1000,
+                    "series_total": 420,
                     "attributes": [
     
                     ],
                     "collection": {
-                        "name": "Example Pokémon Collection",
-                        "id": "e43fcfe6-1d5c-4d6e-82da-5de3aa8b3b57",
-                    },
+                        name: "Zuri NFT Tickets for Free Lunch",
+                        id: "b774f676-c1d5-422e-beed-00ef5510c64d",
+                        attributes: [
+                            {
+                                type: "description",
+                                value: "Rewards for accomplishments during HNGi9."
+                            }
+                        ]
+                    }
                 }
     
                 //CHANGING JSON DATA BASED ON NFT INFO
@@ -51,7 +56,6 @@ exports.app = (filename, headerArr, ) => {
                     "trait_type": "Gender",
                     "value": data.Gender,
                 })
-                json.collection.name = teamName;
                 json.collection.id = data.UUID;
     
                 //CHANGING ATTRIBUTE TO THE RIGHT FORMAT
