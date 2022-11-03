@@ -1,5 +1,10 @@
 # hng-csv-task
 
+<h2>Install</h2>
+
+1. download the zip file by pressing the green button labeled "code"
+2. unzip the file
+
 <h2>Usage</h2>
 
 1. copy your ```.csv``` file into the root directory
