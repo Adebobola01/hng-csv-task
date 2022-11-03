@@ -27,30 +27,63 @@ const readCSVfile = async () => {
                 return;
             }
 
+            const json = {
+                "format": "CHIP-0007",
+                "name": "Pikachu",
+                "description": "Electric-type Pokémon with stretchy cheeks",
+                "minting_tool": "SuperMinter/2.5.2",
+                "sensitive_content": false,
+                "series_number": 22,
+                "series_total": 1000,
+                "attributes": [
+
+                ],
+                "collection": {
+                    "name": "Example Pokémon Collection",
+                    "id": "e43fcfe6-1d5c-4d6e-82da-5de3aa8b3b57",
+                },
+            }
+            json.name = data.Name;
+            json.description = data.Description;
+            json.series_number = data['Series Number'];
+            json.attributes.push({
+                "trait_type": "Gender",
+                "value": data.Gender,
+            })
+            json.collection.id = data.UUID;
+
+
             if (data.Attributes) {
                 const attributes = data.Attributes.split(", ");
                 data.Attributes = [];
                 attributes.forEach((atr) => {
                     const trait = atr.split(": ")[0];
                     const value = atr.split(": ")[1];
-                    data.Attributes.push(
-                        JSON.stringify({
-                            trait_type: trait,
-                            value: value,
-                        })
+                    data.Attributes.push({
+                        "trait_type": trait,
+                        "value": value,
+                    });
+                    json.attributes.push({
+                        "trait_type": trait,
+                        "value": value,
+                    }
                     );
                 });
             }
 
             const hash = crypto.createHash("sha256");
-            const finalHex = hash.update(data.toString()).digest("hex");
+            const finalHex = hash.update(JSON.stringify(json)).digest("hex");
             data.Hash = finalHex;
+            if (data.Attributes) {              
+                const atr = data.Attributes.map((atr) => {
+                    return `${atr.trait_type}: ${atr.value}` 
+                })
+                data.Attributes = atr.join(", ")
+            }
             results.push(data);
-            // console.log(data);
-            await csvWriter.writeRecords(results);
         })
         .on("end", async () => {
-            console.log(results);
+            await csvWriter.writeRecords(results);
         });
 };
 
