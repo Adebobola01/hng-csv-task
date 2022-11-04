@@ -17,9 +17,9 @@ const parseCSV = require("./app").app;   //use any name of your choice for the i
 4. call this variable as a function with arguments (arguments specified below 👇)
 
 ```
-parseCSV("<filename without the ".csv">", [<array of the csv headers>])
+parseCSV("<filename without the ".csv">)
 
-//e.g parseCSV("myCsvFile", ["TEAM NAMES", "Series Number", "Filename"])
+//e.g parseCSV("myCsvFile")
 ```
 5. Run npm install in your cli
 6. Run your js file in the cli
@@ -28,4 +28,4 @@ parseCSV("<filename without the ".csv">", [<array of the csv headers>])
 npm install
 node <your js filename>
 ```
-7. The result will be ```<csv file name>.output.csv``` file created in the root folder as output
+7. The result will be ```<csv file name>.output.csv``` file created in the root folder as output and all the json file get created into the json folder
