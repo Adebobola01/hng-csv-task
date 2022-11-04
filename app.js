@@ -73,7 +73,7 @@ const readCSVfile = async (filename) => {
                     }
                     ;
                 });
-            json.attributes = arr
+            json.attributes = arr;
             //WRITE JSON TO FILE
             fs.writeFileSync(`jsons/${data.Filename}.json`, JSON.stringify(json), err => {
                 if (err) {
