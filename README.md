@@ -9,16 +9,21 @@
 
 1. copy your ```.csv``` file into the root directory
 2. create a javascript file in the root directory
-3. inside this js file import ```app``` from app.js
+3. inside this js file import ```app``` from app.js and store it in a variable (example below 👇)
 
 ```
 const parseCSV = require("./app").app;   //use any name of your choice for the import
 ```
-4. call the function with the arguments
+4. call this variable as a function with arguments (arguments specified below 👇)
 
 ```
-parseCSV("<filename without the ".csv">", [<array of the csv header>])
+parseCSV("<filename without the ".csv">", [<array of the csv headers>])
 
-//e.g parseCSV("file", ["TEAM NAMES", "Series Number", "Filename"])
+//e.g parseCSV("myCsvFile", ["TEAM NAMES", "Series Number", "Filename"])
 ```
-5. The result will be ```<file name>.output.csv``` file created in the root folder as output
+5. Run your js file in the cli
+
+```
+node <your js filename>
+```
+6. The result will be ```<csv file name>.output.csv``` file created in the root folder as output
