@@ -21,9 +21,11 @@ parseCSV("<filename without the ".csv">", [<array of the csv headers>])
 
 //e.g parseCSV("myCsvFile", ["TEAM NAMES", "Series Number", "Filename"])
 ```
-5. Run your js file in the cli
+5. Run npm install in your cli
+6. Run your js file in the cli
 
 ```
+npm install
 node <your js filename>
 ```
-6. The result will be ```<csv file name>.output.csv``` file created in the root folder as output
+7. The result will be ```<csv file name>.output.csv``` file created in the root folder as output
